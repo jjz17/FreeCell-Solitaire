@@ -1,6 +1,4 @@
-from card import Card
-from value import Value
-from suit import Suit
+from card import Card, Value, Suit
 import random
 
 
