@@ -37,6 +37,21 @@ class FreeCellModel:
         for count, card in enumerate(self.deck.cards):
             self.cascade_piles[count % num_piles].cards.append(card)
 
+    def reset_board(self):
+        num_cascade_piles = len(self.cascade_piles)
+        num_open_piles = len(self.open_piles)
+        self.foundation_piles = [FoundationPile([]) for i in range(4)]
+        self.init_cascade_piles(num_cascade_piles)
+        self.open_piles = [OpenPile([]) for i in range(num_open_piles)]
+
+    def reset_game(self):
+        num_cascade_piles = len(self.cascade_piles)
+        num_open_piles = len(self.open_piles)
+        self.deck.shuffle()
+        self.foundation_piles = [FoundationPile([]) for i in range(4)]
+        self.init_cascade_piles(num_cascade_piles)
+        self.open_piles = [OpenPile([]) for i in range(num_open_piles)]
+
     def execute_move(self, source_string, index_string, target_string):
         # Validate inputs
         source_pile_type = FreeCellModel.valid_pile_type_check(source_string[0])
@@ -74,7 +89,6 @@ class FreeCellModel:
         except IndexError:
             raise IndexError('Index out of bounds')
 
-
     @staticmethod
     def valid_pile_type_check(pile_type, source=True):
         if source:
@@ -98,12 +112,20 @@ class FreeCellModel:
             raise TypeError('Index must be an integer')
 
     def play(self):
+        # Display board
         print(self)
         playing = True
         while playing:
-            user_input = input('Make a move, enter q to quit\n')
+            user_input = input(
+                'Make a move: q to quit, r to restart with the same deck, n to restart with a new deck\n')
             if user_input == 'q':
                 playing = False
+            elif user_input == 'r':
+                self.reset_board()
+                print(self)
+            elif user_input == 'n':
+                self.reset_game()
+                print(self)
             else:
                 print(f'You input {user_input}')
                 args = user_input.split()

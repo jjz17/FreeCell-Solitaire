@@ -33,9 +33,11 @@ class OpenPile(Pile):
         # If pile is empty
         if len(self.cards) == 0:
             raise ValueError('Cannot move card from empty open pile')
-        else:
+        elif index == 0:
             card = self.cards[index]
             return target.legal_move_to_check(card)
+        else:
+            raise ValueError('Index must be positive')
 
     def legal_move_to_check(self, card):
         if len(self.cards) != 0:
