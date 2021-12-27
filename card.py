@@ -18,7 +18,7 @@ class Card:
 
     def same_color(self, other_card):
         color_set = {self.suit, other_card.suit}
-        return color_set in [Suit.Clubs, Suit.Spades] or color_set in [Suit.Hearts, Suit.Diamonds]
+        return color_set.issubset({Suit.Clubs, Suit.Spades}) or color_set.issubset({Suit.Hearts, Suit.Diamonds})
 
     def value_one_less_than(self, other_card):
         return self.value.value == other_card.value.value - 1

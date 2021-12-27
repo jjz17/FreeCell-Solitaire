@@ -14,5 +14,3 @@ class Deck:
 
     def shuffle(self):
         random.shuffle(self.cards)
-
-

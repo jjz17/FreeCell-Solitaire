@@ -1,6 +1,5 @@
 from deck import Deck
 from pile import FoundationPile, CascadePile, OpenPile
-from card import Card
 
 
 class FreeCellModel:
@@ -112,12 +111,16 @@ class FreeCellModel:
             raise TypeError('Index must be an integer')
 
     def play(self):
+        instructions = 'Enter q to quit, r to restart with the same deck, n to restart with a new deck, s to show board, and h for help\n'
+        print('\nFreeCell Solitaire: Implemented by Jason Zhang\n')
+        print('To execute a card move, specify the source pile, card index, '
+              'and the target pile in the following format: C1 13 O3')
+        print(instructions)
         # Display board
         print(self)
         playing = True
         while playing:
-            user_input = input(
-                'Make a move: q to quit, r to restart with the same deck, n to restart with a new deck\n')
+            user_input = input('Next move: ')
             if user_input == 'q':
                 playing = False
             elif user_input == 'r':
@@ -126,18 +129,20 @@ class FreeCellModel:
             elif user_input == 'n':
                 self.reset_game()
                 print(self)
+            elif user_input == 's':
+                print(self)
+            elif user_input == 'h':
+                print(instructions)
             else:
-                print(f'You input {user_input}')
+                # print(f'You input {user_input}')
                 args = user_input.split()
                 if len(args) != 3:
-                    print('Invalid number of inputs')
+                    print('\nInvalid number of inputs\n')
                     continue
-                # for arg in args:
-                #     print(arg)
                 try:
                     self.execute_move(args[0], args[1], args[2])
                 except Exception as e:
-                    print(f'Invalid move: {e}')
+                    print(f'\nInvalid move: {e}\n')
                 print(self)
         print('Process complete')
 
@@ -145,9 +150,6 @@ class FreeCellModel:
 def main():
     model = FreeCellModel(4, 4)
     model.play()
-    # print(model.__class__.valid_index_check('a'))
-    # model.__class__.valid_pile_type_check('C')
-    # print(FreeCellModel.valid_pile_type_check('C'))
 
 
 if __name__ == "__main__":
