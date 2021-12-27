@@ -13,11 +13,14 @@ class Card:
     def __str__(self):
         return f'{self.value.value}{self.suit.value}'
 
-    def same_color_check(self, other_card):
+    def same_suit(self, other_card):
+        return self.suit == other_card.suit
+
+    def same_color(self, other_card):
         color_set = {self.suit, other_card.suit}
         return color_set in [Suit.Clubs, Suit.Spades] or color_set in [Suit.Hearts, Suit.Diamonds]
 
-    def value_one_less_than_check(self, other_card):
+    def value_one_less_than(self, other_card):
         return self.value.value == other_card.value.value - 1
 
 

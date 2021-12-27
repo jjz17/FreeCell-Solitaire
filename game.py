@@ -37,28 +37,31 @@ class FreeCellModel:
         for count, card in enumerate(self.deck.cards):
             self.cascade_piles[count % num_piles].cards.append(card)
 
-    def execute_move(self, source, index, target):
+    def execute_move(self, source_string, index_string, target_string):
         # Validate inputs
-        source_pile_type = FreeCellModel.valid_pile_type_check(source[0])
-        source_pile_ind = FreeCellModel.valid_index_check(source[1:])
-        index = FreeCellModel.valid_index_check(index)
-        target_pile_type = FreeCellModel.valid_pile_type_check(target[0], source=False)
-        target_pile_ind = FreeCellModel.valid_index_check(target[1:])
+        source_pile_type = FreeCellModel.valid_pile_type_check(source_string[0])
+        source_pile_ind = FreeCellModel.valid_index_check(source_string[1:])
+        index = FreeCellModel.valid_index_check(index_string)
+        target_pile_type = FreeCellModel.valid_pile_type_check(target_string[0], source=False)
+        target_pile_ind = FreeCellModel.valid_index_check(target_string[1:])
 
-        # if source_pile_type == 'C':
-        #     if target_pile_type == 'F':
-        #         self.foundation_piles[target_pile_ind].append(self.cascade_piles[source_pile_ind].pop(index))
-        # else:
-        #     print('Failed')
-
-        self.move(source_pile_type, source_pile_ind, index, target_pile_type, target_pile_ind)
-
-    def move(self, source_pile_type, source_pile_ind, index, target_pile_type, target_pile_ind):
         source = self.select_pile(source_pile_type, source_pile_ind)
         target = self.select_pile(target_pile_type, target_pile_ind)
 
-        pass
+        # Source and target are guaranteed to be valid piles
 
+        self.legal_move_check(source, index, target)
+
+        self.move(source, index, target)
+
+    def legal_move_check(self, source, index, target):
+        return source.legal_move_from_check(index, target)
+
+    def move(self, source, index, target):
+        # Move the card
+        target.append(source.pop(index))
+
+    # Handles index out of bounds
     def select_pile(self, pile_type, pile_ind):
         try:
             if pile_type == 'C':
@@ -119,7 +122,7 @@ class FreeCellModel:
 
 def main():
     model = FreeCellModel(4, 4)
-    # model.play()
+    model.play()
     # print(model.__class__.valid_index_check('a'))
     # model.__class__.valid_pile_type_check('C')
     # print(FreeCellModel.valid_pile_type_check('C'))
