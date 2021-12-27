@@ -35,36 +35,64 @@ class FreeCellModel:
         self.cascade_piles = [CascadePile([]) for i in range(num_piles)]
         # Add cards to cascade piles
         for count, card in enumerate(self.deck.cards):
-            # index = count%num_piles
-            # pile = self.cascade_piles[index]
-            # new_card = Card(card.value, card.suit)
-            # pile.cards.append(card)
             self.cascade_piles[count % num_piles].cards.append(card)
 
-    # def move(self, source, index, target):
-    #     pile_type = source[0]
-    #     pile_ind = source[1:]
-    #     if pile_type in ['C', 'O'] and isinstance(int(pile_ind), int):
-    #         pile_ind = int(pile_ind)
-    #         if pile_type == 'C':
-    #             if len(self.cascade_piles) >= pile_ind:
-    #
-    #         else:
-    #
-    #     else:
-    #         print('Invalid move')
-    def move(self, source, index, target):
+    def execute_move(self, source, index, target):
         # Validate inputs
-        source_pile_type = source[0]
-        source_pile_ind = int(source[1:]) - 1
-        index = int(index) - 1
-        target_pile_type = target[0]
-        target_pile_ind = int(target[1:]) - 1
-        if source_pile_type == 'C':
-            if target_pile_type == 'F':
-                self.foundation_piles[target_pile_ind].append(self.cascade_piles[source_pile_ind].pop(index))
+        source_pile_type = FreeCellModel.valid_pile_type_check(source[0])
+        source_pile_ind = FreeCellModel.valid_index_check(source[1:])
+        index = FreeCellModel.valid_index_check(index)
+        target_pile_type = FreeCellModel.valid_pile_type_check(target[0], source=False)
+        target_pile_ind = FreeCellModel.valid_index_check(target[1:])
+
+        # if source_pile_type == 'C':
+        #     if target_pile_type == 'F':
+        #         self.foundation_piles[target_pile_ind].append(self.cascade_piles[source_pile_ind].pop(index))
+        # else:
+        #     print('Failed')
+
+        self.move(source_pile_type, source_pile_ind, index, target_pile_type, target_pile_ind)
+
+    def move(self, source_pile_type, source_pile_ind, index, target_pile_type, target_pile_ind):
+        source = self.select_pile(source_pile_type, source_pile_ind)
+        target = self.select_pile(target_pile_type, target_pile_ind)
+
+        pass
+
+    def select_pile(self, pile_type, pile_ind):
+        try:
+            if pile_type == 'C':
+                return self.cascade_piles[pile_ind]
+            elif pile_type == 'O':
+                return self.open_piles[pile_ind]
+            else:
+                return self.foundation_piles[pile_ind]
+        # Handles index out of bounds
+        except IndexError:
+            raise IndexError('Index out of bounds')
+
+
+    @staticmethod
+    def valid_pile_type_check(pile_type, source=True):
+        if source:
+            if pile_type in ['C', 'O']:
+                return pile_type
+            else:
+                raise ValueError('Invalid pile type identifier')
         else:
-            print('Failed')
+            if pile_type in ['C', 'O', 'F']:
+                return pile_type
+            else:
+                raise ValueError('Invalid pile type identifier')
+
+    @staticmethod
+    def valid_index_check(index):
+        try:
+            index = int(index)
+            # to scale index down to start at 0
+            return index - 1
+        except ValueError:
+            raise TypeError('Index must be an integer')
 
     def play(self):
         print(self)
@@ -81,14 +109,20 @@ class FreeCellModel:
                     continue
                 # for arg in args:
                 #     print(arg)
-                self.move(args[0], args[1], args[2])
+                try:
+                    self.execute_move(args[0], args[1], args[2])
+                except Exception as e:
+                    print(f'Invalid move: {e}')
                 print(self)
         print('Process complete')
 
 
 def main():
     model = FreeCellModel(4, 4)
-    model.play()
+    # model.play()
+    # print(model.__class__.valid_index_check('a'))
+    # model.__class__.valid_pile_type_check('C')
+    # print(FreeCellModel.valid_pile_type_check('C'))
 
 
 if __name__ == "__main__":

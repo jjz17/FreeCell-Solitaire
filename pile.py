@@ -8,9 +8,13 @@ class Pile:
     def pop(self, index):
         return self.cards.pop(index)
 
+    def get_last_card(self):
+        return self.cards[-1]
+
 
 class FoundationPile(Pile):
-    pass
+    def legal_move_check(self):
+        pass
 
 
 class OpenPile(Pile):

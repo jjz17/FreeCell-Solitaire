@@ -13,6 +13,10 @@ class Card:
     def __str__(self):
         return f'{self.value.value}{self.suit.value}'
 
+    def same_color_check(self, other_card):
+        color_set = {self.suit, other_card.suit}
+        return color_set in [Suit.Clubs, Suit.Spades] or color_set in [Suit.Hearts, Suit.Diamonds]
+
 
 class Value(Enum):
     Ace = 1
