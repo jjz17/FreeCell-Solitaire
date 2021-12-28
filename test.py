@@ -1,5 +1,5 @@
-from deck import Deck
-from card import Card, Value, Suit
+from model.deck import Deck
+from model.card import Card, Value, Suit
 
 deck = Deck()
 print(deck.cards)

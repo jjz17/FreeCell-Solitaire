@@ -1,18 +1,12 @@
-from deck import Deck
-from pile import FoundationPile, CascadePile, OpenPile
+from model.deck import Deck
+from model.pile import FoundationPile, CascadePile, OpenPile
 
 
 class FreeCellModel:
     def __init__(self, num_cascade_piles, num_open_piles):
-        if num_cascade_piles < 4:
-            raise ValueError('Must have at least 4 Cascade piles')
-        if num_open_piles < 2:
-            raise ValueError('Must have at least 2 Open piles')
         self.deck = Deck()
         self.deck.shuffle()
-        self.foundation_piles = [FoundationPile([]) for i in range(4)]
-        self.init_cascade_piles(num_cascade_piles)
-        self.open_piles = [OpenPile([]) for i in range(num_open_piles)]
+        self.set_piles(num_cascade_piles, num_open_piles)
 
     def __str__(self):
         model_string = ''
@@ -33,12 +27,40 @@ class FreeCellModel:
             model_string += f'C{count + 1}:{pile_string}\n'
         return model_string
 
+    def set_piles(self, num_cascade_piles, num_open_piles):
+        if num_cascade_piles < 4:
+            raise ValueError('Must have at least 4 Cascade piles')
+        if num_open_piles < 2:
+            raise ValueError('Must have at least 2 Open piles')
+        self.foundation_piles = [FoundationPile([]) for i in range(4)]
+        self.init_cascade_piles(num_cascade_piles)
+        self.open_piles = [OpenPile([]) for i in range(num_open_piles)]
+
     def init_cascade_piles(self, num_piles):
         # Create cascade piles
         self.cascade_piles = [CascadePile([]) for i in range(num_piles)]
         # Add cards to cascade piles
         for count, card in enumerate(self.deck.cards):
             self.cascade_piles[count % num_piles].cards.append(card)
+
+    def customize_model(self):
+        customized = False
+        while not customized:
+            try:
+                num_cascade_piles = input('# Cascade Piles: ')
+                if num_cascade_piles.split():
+                    num_open_piles = input('# Open Piles: ')
+                    num_cascade_piles = FreeCellModel.valid_integer_check(num_cascade_piles)
+                    num_open_piles = FreeCellModel.valid_integer_check(num_open_piles)
+                    try:
+                        self.set_piles(num_cascade_piles, num_open_piles)
+                        customized = True
+                    except ValueError as e:
+                        print(e)
+                else:
+                    customized = True
+            except TypeError as e:
+                print(e)
 
     def reset_board(self):
         num_cascade_piles = len(self.cascade_piles)
@@ -116,6 +138,13 @@ class FreeCellModel:
             return index - 1
         except ValueError:
             raise TypeError('Index must be an integer')
+
+    @staticmethod
+    def valid_integer_check(integer):
+        try:
+            return int(integer)
+        except ValueError:
+            raise TypeError('Not an integer')
 
     def play(self):
         instructions = 'Enter q to quit, r to restart with the same deck, n to restart with a new deck, s to show board, and h for help\n'

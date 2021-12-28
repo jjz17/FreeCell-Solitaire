@@ -1,4 +1,4 @@
-from card import Card, Value, Suit
+from model.card import Card, Value, Suit
 import random
 
 

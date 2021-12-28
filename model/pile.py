@@ -1,4 +1,4 @@
-from card import Value
+from model.card import Value
 
 
 class Pile:
