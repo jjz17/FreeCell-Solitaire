@@ -10,16 +10,21 @@ class Controller:
               'like.\n The default is 4 cascade and 4 open piles.\n To play the default game, hit enter at the prompt.')
         started = False
         while not started:
-            num_cascade = input('# Cascade Piles: ')
-            if num_cascade.split():
-                num_open = input('# Open Piles: ')
-                num_cascade = Controller.valid_integer_check(num_cascade)
-                num_open = Controller.valid_integer_check(num_open)
-                try:
-                    self.model = FreeCellModel(num_cascade, num_open)
+            try:
+                num_cascade = input('# Cascade Piles: ')
+                if num_cascade.split():
+                    num_open = input('# Open Piles: ')
+                    num_cascade = Controller.valid_integer_check(num_cascade)
+                    num_open = Controller.valid_integer_check(num_open)
+                    try:
+                        self.model = FreeCellModel(num_cascade, num_open)
+                        started = True
+                    except ValueError as e:
+                        print(e)
+                else:
                     started = True
-                except ValueError as e:
-                    print(e)
+            except TypeError as e:
+                print(e)
         self.model.play()
 
     @staticmethod
@@ -28,6 +33,7 @@ class Controller:
             return int(integer)
         except ValueError:
             raise TypeError('Not an integer')
+
 
 def main():
     controller = Controller()
