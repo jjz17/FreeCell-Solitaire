@@ -52,7 +52,7 @@ class FreeCellModel:
         self.open_piles = [OpenPile([]) for i in range(num_open_piles)]
 
     def execute_move(self, source_string, index_string, target_string):
-        # Validate inputs
+        # Validate inputs (proper formatting)
         source_pile_type = FreeCellModel.valid_pile_type_check(source_string[0])
         source_pile_ind = FreeCellModel.valid_index_check(source_string[1:])
         index = FreeCellModel.valid_index_check(index_string)
@@ -64,11 +64,14 @@ class FreeCellModel:
 
         # Source and target are guaranteed to be valid piles
 
+        # Raises error if move is illegal
         self.legal_move_check(source, index, target)
 
         self.move(source, index, target)
 
     def legal_move_check(self, source, index, target):
+        if source == target:
+            raise ValueError('Source and target piles must be different')
         return source.legal_move_from_check(index, target)
 
     def move(self, source, index, target):
@@ -94,12 +97,12 @@ class FreeCellModel:
             if pile_type in ['C', 'O']:
                 return pile_type
             else:
-                raise ValueError('Invalid pile type identifier')
+                raise ValueError('Invalid pile type identifier, source piles are either C or O')
         else:
             if pile_type in ['C', 'O', 'F']:
                 return pile_type
             else:
-                raise ValueError('Invalid pile type identifier')
+                raise ValueError('Invalid pile type identifier, target piles are either C, O, or F')
 
     @staticmethod
     def valid_index_check(index):
