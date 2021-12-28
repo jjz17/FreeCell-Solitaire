@@ -9,7 +9,7 @@ Implementation of the FreeCell Solitaire game
 
 
 
-<h1 align="center"><project-name></h1>
+<h1 align="center"><FreeCell Solitaire></h1>
 
 <p align="center"><project-description></p>
 
