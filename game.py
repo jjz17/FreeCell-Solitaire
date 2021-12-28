@@ -4,6 +4,10 @@ from pile import FoundationPile, CascadePile, OpenPile
 
 class FreeCellModel:
     def __init__(self, num_cascade_piles, num_open_piles):
+        if num_cascade_piles < 4:
+            raise ValueError('Must have at least 4 Cascade piles')
+        if num_open_piles < 2:
+            raise ValueError('Must have at least 2 Open piles')
         self.deck = Deck()
         self.deck.shuffle()
         self.foundation_piles = [FoundationPile([]) for i in range(4)]
