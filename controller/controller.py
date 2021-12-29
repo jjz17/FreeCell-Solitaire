@@ -39,34 +39,35 @@ class Controller:
         # print('To execute a card move, specify the source pile, card index, '
         #       'and the target pile in the following format: C1 13 O3')
         # print(instructions)
+        self.view.render_initial_dialogue()
+        self.view.render_instructions()
         # Display board
-        print(self)
+        self.view.render_board()
         playing = True
         while playing:
             user_input = input('Next move: ')
             if user_input == 'q':
                 playing = False
             elif user_input == 'r':
-                self.reset_board()
-                print(self)
+                self.model.reset_board()
+                self.view.render_board()
             elif user_input == 'n':
-                self.reset_game()
-                print(self)
+                self.model.reset_game()
+                self.view.render_board()
             elif user_input == 's':
-                print(self)
+                self.view.render_board()
             elif user_input == 'h':
-                print(instructions)
+                self.view.render_instructions()
             else:
-                # print(f'You input {user_input}')
                 args = user_input.split()
                 if len(args) != 3:
                     print('\nInvalid number of inputs\n')
                     continue
                 try:
-                    self.execute_move(args[0], args[1], args[2])
+                    self.model.execute_move(args[0], args[1], args[2])
                 except Exception as e:
                     print(f'\nInvalid move: {e}\n')
-                print(self)
+                self.view.render_board()
         print('Process complete')
 
     @staticmethod
