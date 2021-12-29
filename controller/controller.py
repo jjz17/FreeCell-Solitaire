@@ -2,6 +2,13 @@ from model.game import FreeCellModel
 from view.text_view import TextView
 
 
+def valid_integer_check(integer):
+    try:
+        return int(integer)
+    except ValueError:
+        raise TypeError('Not an integer')
+
+
 class Controller:
     def __init__(self):
         self.model = FreeCellModel(4, 4)
@@ -9,19 +16,18 @@ class Controller:
 
     def set_up(self):
         print('\nCustomize your FreeCell Solitaire game by specifying the number of cascade and open piles you would '
-              'like.\n\nThe default is 4 cascade and 4 open piles.\n\nTo play the default game, hit enter at the prompt.')
-        # self.model.customize_model()
+              'like.\n\nThe default is 4 cascade and 4 open piles.\n\nTo play the default game, hit enter at the '
+              'prompt.')
         started = False
         while not started:
             try:
                 num_cascade_piles = input('# Cascade Piles: ')
                 if num_cascade_piles.split():
                     num_open_piles = input('# Open Piles: ')
-                    num_cascade_piles = Controller.valid_integer_check(num_cascade_piles)
-                    num_open_piles = Controller.valid_integer_check(num_open_piles)
+                    num_cascade_piles = valid_integer_check(num_cascade_piles)
+                    num_open_piles = valid_integer_check(num_open_piles)
                     try:
                         self.model.set_piles(num_cascade_piles, num_open_piles)
-                        # self.view = TextView(self.model)
                         started = True
                     except ValueError as e:
                         print(e)
@@ -30,15 +36,7 @@ class Controller:
             except TypeError as e:
                 print(e)
 
-        # Model is now created
-
-
     def play(self):
-        # instructions = 'Enter q to quit, r to restart with the same deck, n to restart with a new deck, s to show board, and h for help\n'
-        # print('\nFreeCell Solitaire: Implemented by Jason Zhang\n')
-        # print('To execute a card move, specify the source pile, card index, '
-        #       'and the target pile in the following format: C1 13 O3')
-        # print(instructions)
         self.view.render_initial_dialogue()
         self.view.render_instructions()
         # Display board
@@ -69,13 +67,6 @@ class Controller:
                     print(f'\nInvalid move: {e}\n')
                 self.view.render_board()
         print('Process complete')
-
-    @staticmethod
-    def valid_integer_check(integer):
-        try:
-            return int(integer)
-        except ValueError:
-            raise TypeError('Not an integer')
 
 
 def main():
