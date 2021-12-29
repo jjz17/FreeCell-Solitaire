@@ -4,18 +4,9 @@ Implementation of the FreeCell Solitaire game
 
 [Description](https://course.ccs.neu.edu/cs3500f16/hw_02_assignment.html)
 
-
-
-
-
-
-<h1 align="center"><FreeCell Solitaire></h1>
-
-<p align="center"><project-description></p>
-
 ## Links
 
-- [Repo](https://github.com/Rohit19060/<project-name> "<project-name> Repo")
+- [Repo](https://github.com/jjz17/FreeCell-Solitaire "<project-name> Repo")
 
 - [Live](<Homepage url> "Live View")
 
@@ -60,12 +51,19 @@ For running the server file on you can use this command.
 
 ## Built With
 
-- JavaScript
-- Node
-- NPM
-- Webpack
-- HTML
-- CSS
+- Python
+
+[comment]: <> (- JavaScript)
+
+[comment]: <> (- Node)
+
+[comment]: <> (- NPM)
+
+[comment]: <> (- Webpack)
+
+[comment]: <> (- HTML)
+
+[comment]: <> (- CSS)
 
 ## Future Updates
 
@@ -73,10 +71,10 @@ For running the server file on you can use this command.
 
 ## Author
 
-**Rohit Jain**
+**Jason Zhang**
 
-- [Profile](https://github.com/rohit19060 "Rohit jain")
-- [Email](mailto:rohitjain19060@gmail.com?subject=Hi "Hi!")
+- [Profile](https://github.com/jjz17 "Jason Zhang")
+- [Email](mailto:jasonjzhang17@gmail.com?subject=Hi "Hi!")
 - [Website](https://kingtechnologies.in "Welcome")
 
 ## 🤝 Support
