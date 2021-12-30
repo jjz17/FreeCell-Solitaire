@@ -15,9 +15,7 @@ class Controller:
         self.view = TextView(self.model)
 
     def set_up(self):
-        print('\nCustomize your FreeCell Solitaire game by specifying the number of cascade and open piles you would '
-              'like.\n\nThe default is 4 cascade and 4 open piles.\n\nTo play the default game, hit enter at the '
-              'prompt.')
+        self.view.render_set_up_dialogue()
         started = False
         while not started:
             try:
