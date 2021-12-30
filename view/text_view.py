@@ -1,4 +1,4 @@
-class TextView:
+class ConsoleTextView:
     instructions = 'Enter q to quit, r to restart with the same deck, n to restart with a new deck, s to show board, ' \
                    'and h for help\n '
     initial_dialogue = '\nFreeCell Solitaire: Implemented by Jason Zhang\nTo execute a card move, specify the source ' \

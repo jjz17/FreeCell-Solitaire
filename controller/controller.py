@@ -1,5 +1,5 @@
 from model.game import FreeCellModel
-from view.text_view import TextView
+from view.text_view import ConsoleTextView
 
 
 def valid_integer_check(integer):
@@ -12,7 +12,7 @@ def valid_integer_check(integer):
 class Controller:
     def __init__(self):
         self.model = FreeCellModel(4, 4)
-        self.view = TextView(self.model)
+        self.view = ConsoleTextView(self.model)
 
     def set_up(self):
         self.view.render_set_up_dialogue()
