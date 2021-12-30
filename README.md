@@ -20,8 +20,6 @@ Implementation of the FreeCell Solitaire game
 
 ![](/screenshots/2.png)
 
-![](/screenshots/3.png)
-
 ## Available Commands
 
 In the project directory, you can run:
@@ -75,7 +73,7 @@ For running the server file on you can use this command.
 
 - [Profile](https://github.com/jjz17 "Jason Zhang")
 - [Email](mailto:jasonjzhang17@gmail.com?subject=Hi "Hi!")
-- [Website](https://kingtechnologies.in "Welcome")
+- [Website]("Welcome")
 
 ## 🤝 Support
 
