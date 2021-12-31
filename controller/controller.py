@@ -57,14 +57,14 @@ class Controller:
             else:
                 args = user_input.split()
                 if len(args) != 3:
-                    print('\nInvalid number of inputs\n')
+                    self.view.render_invalid_input_message()
                     continue
                 try:
                     self.model.execute_move(args[0], args[1], args[2])
                 except Exception as e:
-                    print(f'\nInvalid move: {e}\n')
+                    self.view.render_error_message(e)
                 self.view.render_board()
-        print('Process complete')
+        self.view.render_end_dialogue()
 
 
 def main():

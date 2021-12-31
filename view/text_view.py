@@ -5,7 +5,9 @@ class ConsoleTextView:
                        'pile, card index, and the target pile in the following format: C1 13 O3 '
     set_up_dialogue = '\nCustomize your FreeCell Solitaire game by specifying the number of cascade and open piles ' \
                       'you would like.\n\nThe default is 4 cascade and 4 open piles.\n\nTo play the default game, ' \
-                      'hit enter at the prompt. '
+                      'hit enter at the prompt.'
+    end_dialogue = 'Game ended.'
+    invalid_input_dialogue = '\nInvalid number of inputs\n'
 
     def __init__(self, model):
         self.model = model
@@ -21,3 +23,12 @@ class ConsoleTextView:
 
     def render_set_up_dialogue(self):
         print(self.set_up_dialogue)
+
+    def render_end_dialogue(self):
+        print(self.end_dialogue)
+
+    def render_error_message(self, error):
+        print(f'\nInvalid move: {error}\n')
+
+    def render_invalid_input_message(self):
+        print(self.invalid_input_dialogue)
