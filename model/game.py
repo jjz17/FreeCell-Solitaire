@@ -50,8 +50,6 @@ class FreeCellModel:
         self.cascade_piles = []
         self.open_piles = []
         self.set_piles(num_cascade_piles, num_open_piles)
-        self.num_cascade_piles = num_cascade_piles
-        self.num_open_piles = num_open_piles
 
     def __str__(self):
         model_string = ''
@@ -135,10 +133,11 @@ class FreeCellModel:
             raise IndexError('Index out of bounds')
 
     def game_stats(self):
-        return {'cards in foundation piles': None, 'cards to sort': None, '# of cascade piles': None,
-                '# of open piles': None}
+        num_foundation = self.cards_in_foundation()
+        remaining = 52 - num_foundation
+        return {'cards in foundation': num_foundation, 'cards to sort': remaining,
+                '# cascade': len(self.cascade_piles),
+                '# open': len(self.open_piles)}
 
     def cards_in_foundation(self):
-        count = 0
-        for pile in self.foundation_piles:
-            count += pile
+        return sum([pile.len() for pile in self.foundation_piles])
