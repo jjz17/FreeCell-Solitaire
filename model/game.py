@@ -50,6 +50,8 @@ class FreeCellModel:
         self.cascade_piles = []
         self.open_piles = []
         self.set_piles(num_cascade_piles, num_open_piles)
+        self.num_cascade_piles = num_cascade_piles
+        self.num_open_piles = num_open_piles
 
     def __str__(self):
         model_string = ''
@@ -131,3 +133,7 @@ class FreeCellModel:
         # Handles index out of bounds
         except IndexError:
             raise IndexError('Index out of bounds')
+
+    def game_stats(self):
+        return {'cards in foundation piles': None, 'cards to sort': None, '# of cascade piles': None,
+                '# of open piles': None}
