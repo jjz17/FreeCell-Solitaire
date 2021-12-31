@@ -137,3 +137,8 @@ class FreeCellModel:
     def game_stats(self):
         return {'cards in foundation piles': None, 'cards to sort': None, '# of cascade piles': None,
                 '# of open piles': None}
+
+    def cards_in_foundation(self):
+        count = 0
+        for pile in self.foundation_piles:
+            count += pile

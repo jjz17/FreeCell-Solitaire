@@ -11,6 +11,9 @@ class Pile:
     def pop(self, index):
         return self.cards.pop(index)
 
+    def len(self):
+        return len(self.cards)
+
     def last_card(self):
         return self.cards[-1]
 
