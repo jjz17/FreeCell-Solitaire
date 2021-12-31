@@ -41,6 +41,11 @@ class Controller:
         self.view.render_board()
         playing = True
         while playing:
+
+            if self.model.game_won_check():
+                self.view.render_game_won_dialogue()
+                break
+
             user_input = input('Next move: ')
             if user_input == 'q':
                 playing = False
@@ -50,8 +55,10 @@ class Controller:
             elif user_input == 'n':
                 self.model.reset_game()
                 self.view.render_board()
-            elif user_input == 's':
+            elif user_input == 'b':
                 self.view.render_board()
+            elif user_input == 's':
+                self.view.render_game_stats()
             elif user_input == 'h':
                 self.view.render_instructions()
             else:

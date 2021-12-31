@@ -141,3 +141,6 @@ class FreeCellModel:
 
     def cards_in_foundation(self):
         return sum([pile.len() for pile in self.foundation_piles])
+
+    def game_won_check(self):
+        return self.cards_in_foundation() == 52
