@@ -1,4 +1,4 @@
-# FreeCell Solitaire
+# FreeCell Solitaire ADD PROGRESS BAR
 
 Implementation of the FreeCell Solitaire game
 
