@@ -1,6 +1,6 @@
 class ConsoleTextView:
     instructions = 'Enter q to quit, r to restart with the same deck, n to restart with a new deck, b to show board, ' \
-                   's for game stats, and h for help\n '
+                   's for game stats, p for progress bar, and h for help\n '
     initial_dialogue = '\nFreeCell Solitaire: Implemented by Jason Zhang\nTo execute a card move, specify the source ' \
                        'pile, card index, and the target pile in the following format: C1 13 O3 '
     set_up_dialogue = '\nCustomize your FreeCell Solitaire game by specifying the number of cascade and open piles ' \
@@ -39,4 +39,15 @@ class ConsoleTextView:
 
     def render_game_stats(self):
         print(self.model.game_stats())
+
+    def render_progress_bar(self):
+        progress = self.model.progress()
+        # 0-52
+        progress = int(progress * 52)
+        p_bar = '█'
+        e_bar = '▁'
+        progress_bar = p_bar*progress + e_bar*(52-progress)
+        print(f'Progress: {progress_bar}')
+
+
 

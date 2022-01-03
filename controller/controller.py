@@ -59,6 +59,8 @@ class Controller:
                 self.view.render_board()
             elif user_input == 's':
                 self.view.render_game_stats()
+            elif user_input == 'p':
+                self.view.render_progress_bar()
             elif user_input == 'h':
                 self.view.render_instructions()
             else:

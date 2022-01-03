@@ -144,3 +144,6 @@ class FreeCellModel:
 
     def game_won_check(self):
         return self.cards_in_foundation() == 52
+
+    def progress(self):
+        return self.cards_in_foundation() / 52
