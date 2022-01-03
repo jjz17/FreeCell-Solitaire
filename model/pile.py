@@ -17,6 +17,9 @@ class Pile:
     def last_card(self):
         return self.cards[-1]
 
+    def legal_move_from_check(self, index, target):
+        pass
+
 
 class FoundationPile(Pile):
     def legal_move_from_check(self, index, target):

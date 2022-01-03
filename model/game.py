@@ -1,19 +1,19 @@
 from model.deck import Deck
-from model.pile import FoundationPile, CascadePile, OpenPile
+from model.pile import Pile, FoundationPile, CascadePile, OpenPile
 
 
-def legal_move_check(source, index, target):
+def legal_move_check(source: Pile, index: int, target: Pile) -> bool:
     if source == target:
         raise ValueError('Source and target piles must be different')
-    return source.legal_move_from_check(index, target)
+    source.legal_move_from_check(index, target)
 
 
-def move(source, index, target):
+def move(source: Pile, index: int, target: Pile):
     # Move the card
     target.append(source.pop(index))
 
 
-def valid_pile_type_check(pile_type, source=True):
+def valid_pile_type_check(pile_type: str, source=True):
     if source:
         if pile_type in ['C', 'O']:
             return pile_type
@@ -26,7 +26,7 @@ def valid_pile_type_check(pile_type, source=True):
             raise ValueError('Invalid pile type identifier, target piles are either C, O, or F')
 
 
-def valid_index_check(index):
+def valid_index_check(index: str):
     try:
         index = int(index)
         # to scale index down to start at 0
@@ -35,7 +35,7 @@ def valid_index_check(index):
         raise TypeError('Index must be an integer')
 
 
-def valid_integer_check(integer):
+def valid_integer_check(integer: str):
     try:
         return int(integer)
     except ValueError:
@@ -43,7 +43,7 @@ def valid_integer_check(integer):
 
 
 class FreeCellModel:
-    def __init__(self, num_cascade_piles, num_open_piles):
+    def __init__(self, num_cascade_piles: int, num_open_piles: int):
         self.deck = Deck()
         self.deck.shuffle()
         self.foundation_piles = []
