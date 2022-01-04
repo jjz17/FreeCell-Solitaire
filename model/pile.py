@@ -1,8 +1,10 @@
+from typing import List
+
 from model.card import Value, Card
 
 
 class Pile:
-    def __init__(self, cards: list):
+    def __init__(self, cards: List[Card]):
         self.cards = cards
 
     def append(self, element: Card):
