@@ -22,6 +22,9 @@ class Pile:
     def legal_move_from_check(self, index: int, target):
         pass
 
+    def legal_move_to_check(self, card: Card):
+        pass
+
 
 class FoundationPile(Pile):
     def legal_move_from_check(self, index: int, target: Pile):
