@@ -1,3 +1,6 @@
+from model.game import FreeCellModel
+
+
 class ConsoleTextView:
     instructions = 'Enter q to quit, r to restart with the same deck, n to restart with a new deck, b to show board, ' \
                    's for game stats, p for progress bar, and h for help\n '
@@ -10,7 +13,7 @@ class ConsoleTextView:
     invalid_input_dialogue = '\nInvalid number of inputs\n'
     game_won_dialogue = 'You won!'
 
-    def __init__(self, model):
+    def __init__(self, model: FreeCellModel):
         self.model = model
 
     def render_board(self):
@@ -28,7 +31,7 @@ class ConsoleTextView:
     def render_end_dialogue(self):
         print(self.end_dialogue)
 
-    def render_error_message(self, error):
+    def render_error_message(self, error: Exception):
         print(f'\nInvalid move: {error}\n')
 
     def render_invalid_input_message(self):

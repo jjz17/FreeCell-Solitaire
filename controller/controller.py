@@ -2,7 +2,7 @@ from model.game import FreeCellModel
 from view.text_view import ConsoleTextView
 
 
-def valid_integer_check(integer):
+def valid_integer_check(integer: str):
     try:
         return int(integer)
     except ValueError:

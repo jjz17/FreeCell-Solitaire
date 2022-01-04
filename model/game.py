@@ -70,7 +70,7 @@ class FreeCellModel:
             model_string += f'C{count + 1}:{pile_string}\n'
         return model_string
 
-    def set_piles(self, num_cascade_piles, num_open_piles):
+    def set_piles(self, num_cascade_piles: int, num_open_piles: int):
         if num_cascade_piles < 4:
             raise ValueError('Must have at least 4 Cascade piles')
         if num_open_piles < 2:
@@ -79,7 +79,7 @@ class FreeCellModel:
         self.init_cascade_piles(num_cascade_piles)
         self.open_piles = [OpenPile([]) for i in range(num_open_piles)]
 
-    def init_cascade_piles(self, num_piles):
+    def init_cascade_piles(self, num_piles: int):
         # Create cascade piles
         self.cascade_piles = [CascadePile([]) for i in range(num_piles)]
         # Add cards to cascade piles
@@ -101,7 +101,7 @@ class FreeCellModel:
         self.init_cascade_piles(num_cascade_piles)
         self.open_piles = [OpenPile([]) for i in range(num_open_piles)]
 
-    def execute_move(self, source_string, index_string, target_string):
+    def execute_move(self, source_string: str, index_string: str, target_string: str):
         # Validate inputs (proper formatting)
         source_pile_type = valid_pile_type_check(source_string[0])
         source_pile_ind = valid_index_check(source_string[1:])
@@ -120,7 +120,7 @@ class FreeCellModel:
         move(source, index, target)
 
     # Handles index out of bounds
-    def select_pile(self, pile_type, pile_ind):
+    def select_pile(self, pile_type: str, pile_ind: int):
         try:
             if pile_type == 'C':
                 return self.cascade_piles[pile_ind]
