@@ -1,4 +1,4 @@
-from model.game import FreeCellModel
+from model.freecell_model import FreeCellModel
 
 
 class ConsoleTextView:
