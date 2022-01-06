@@ -2,9 +2,8 @@
 
 Implementation of FreeCell Solitaire in Python
 
-[Description](https://course.ccs.neu.edu/cs3500f16/hw_02_assignment.html)
+[comment]: <> ([Description]&#40;https://course.ccs.neu.edu/cs3500f16/hw_02_assignment.html&#41;)
 
-A simplified game of 21 made for Python! 
 ## Card Values
 Suits do not affect card values.
 
@@ -12,6 +11,8 @@ Suits do not affect card values.
 A, J, Q, and K are worth 1, 11, 12, and 13, respectively.
 
 ## Gameplay
+[Detailed Game Rules Description](http://www.solitairecity.com/Help/FreeCell.shtml)
+
 Simply run the script to begin playing. You will have the option to customize your game in terms of the number of 
 cascade and open piles that are available. The deck will automatically be shuffled and distributed into the cascade piles,
 and the goal is to move all the cards to the foundation piles in the proper order. Once all cards are transferred to the
