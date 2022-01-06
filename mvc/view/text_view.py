@@ -1,4 +1,4 @@
-from model.freecell_model import FreeCellModel
+from mvc.model.freecell_model import FreeCellModel
 
 
 class ConsoleTextView:

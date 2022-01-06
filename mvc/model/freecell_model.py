@@ -1,5 +1,5 @@
-from model.deck import Deck
-from model.pile import Pile, FoundationPile, CascadePile, OpenPile
+from mvc.model.deck import Deck
+from mvc.model.pile import Pile, FoundationPile, CascadePile, OpenPile
 
 
 def legal_move_check(source: Pile, index: int, target: Pile) -> bool:

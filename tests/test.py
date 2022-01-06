@@ -1,5 +1,5 @@
-from model.deck import Deck
-from model.card import Card, Value, Suit
+from mvc.model.deck import Deck
+from mvc.model.card import Card, Value, Suit
 
 deck = Deck()
 print(deck.cards)

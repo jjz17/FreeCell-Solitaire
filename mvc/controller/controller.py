@@ -1,5 +1,5 @@
-from model.freecell_model import FreeCellModel
-from view.text_view import ConsoleTextView
+from mvc.model.freecell_model import FreeCellModel
+from mvc.view.text_view import ConsoleTextView
 
 
 def valid_integer_check(integer: str):

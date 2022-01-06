@@ -1,4 +1,4 @@
-from model.card import Card, Value, Suit
+from mvc.model.card import Card, Value, Suit
 import random
 
 

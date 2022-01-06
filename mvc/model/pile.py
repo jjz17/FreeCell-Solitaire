@@ -1,6 +1,6 @@
 from typing import List
 
-from model.card import Value, Card
+from mvc.model.card import Value, Card
 
 
 class Pile:
