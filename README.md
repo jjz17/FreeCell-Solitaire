@@ -1,79 +1,74 @@
 # FreeCell Solitaire
 
-Implementation of the FreeCell Solitaire game
+Implementation of FreeCell Solitaire in Python
 
 [Description](https://course.ccs.neu.edu/cs3500f16/hw_02_assignment.html)
 
-## Links
+A simplified game of 21 made for Python! 
+## Card Values
+Suits do not affect card values.
 
-- [Repo](https://github.com/jjz17/FreeCell-Solitaire "<project-name> Repo")
+2 - 10 all are the same value as the card name.
+A, J, Q, and K are worth 1, 11, 12, and 13, respectively.
 
-- [Live](<Homepage url> "Live View")
+## Gameplay
+Simply run the script to begin playing. You will have the option to customize your game in terms of the number of 
+cascade and open piles that are available. The deck will automatically be shuffled and distributed into the cascade piles,
+and the goal is to move all the cards to the foundation piles in the proper order. Once all cards are transferred to the
+foundation piles, you have won the game! Note: This version of the game only supports single card moves currently.
 
-- [Bugs](https://github.com/Rohit19060/<project-name>/issues "Issues Page")
+[comment]: <> (**Note that for the purpose of this script is to allow the user to play a simple hand of Blackjack without some of the higher level parts of the game like betting or splitting doubles. All ties go to the player in this version of the game.)
 
-- [API](<API Link> "API")
+## Demo
 
-## Screenshots
+![image](https://user-images.githubusercontent.com/48007679/136310729-e354ab8f-c5d5-4eee-bd9c-14857be688d3.png)
 
-![Home Page](/screenshots/1.png "Home Page")
 
-![](/screenshots/2.png)
+  
+## Deployment
 
-## Available Commands
+To deploy this project run
 
-In the project directory, you can run:
+```bash
 
-### `npm start" : "react-scripts start"`,
+  python BlackJackGame.py
 
-The app is built using `create-react-app` so this command Runs the app in Development mode. Open [http://localhost:3000](http://localhost:3000) to view it in the browser. You also need to run the server file as well to completely run the app. The page will reload if you make edits.
-You will also see any lint errors in the console.
+```
 
-### `"npm run build": "react-scripts build"`,
 
-Builds the app for production to the `build` folder. It correctly bundles React in production mode and optimizes the build for the best performance. The build is minified and the filenames include the hashes. Your app will be ready to deploy!
+[comment]: <> (## Links)
 
-### `"npm run test": "react-scripts test"`,
+[comment]: <> (- [Repo]&#40;https://github.com/jjz17/FreeCell-Solitaire "<project-name> Repo"&#41;)
 
-Launches the test runner in the interactive watch mode.
+[comment]: <> (- [Live]&#40;<Homepage url> "Live View"&#41;)
 
-### `"npm run dev": "concurrently "nodemon server" "npm run start"`,
+[comment]: <> (- [Bugs]&#40;https://github.com/Rohit19060/<project-name>/issues "Issues Page"&#41;)
 
-For running the server and app together I am using concurrently this helps a lot in the MERN application as it runs both the server (client and server) concurrently. So you can work on them both together.
+[comment]: <> (- [API]&#40;<API Link> "API"&#41;)
 
-### `"serve": "node server"`
+[comment]: <> (## Screenshots)
 
-For running the server file on you can use this command.
+[comment]: <> (![Home Page]&#40;/screenshots/1.png "Home Page"&#41;)
 
-### `npm run serve`
+[comment]: <> (![]&#40;/screenshots/2.png&#41;)
 
 ## Built With
 
 - Python
 
-[comment]: <> (- JavaScript)
-
-[comment]: <> (- Node)
-
-[comment]: <> (- NPM)
-
-[comment]: <> (- Webpack)
-
-[comment]: <> (- HTML)
-
-[comment]: <> (- CSS)
-
 ## Future Updates
 
-- [ ] Reliable Storage
+- Multi-card move support
 
 ## Author
 
 **Jason Zhang**
 
 - [Profile](https://github.com/jjz17 "Jason Zhang")
+
 - [Email](mailto:jasonjzhang17@gmail.com?subject=Hi "Hi!")
-- [Website]("Welcome")
+
+[comment]: <> (- [Website]&#40;"Welcome"&#41;)
 
 ## 🤝 Support
 
