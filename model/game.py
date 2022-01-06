@@ -101,11 +101,10 @@ class FreeCellModel:
         self.init_cascade_piles(num_cascade_piles)
         self.open_piles = [OpenPile([]) for i in range(num_open_piles)]
 
-    def execute_move(self, source_string: str, index_string: str, target_string: str):
+    def execute_move(self, source_string: str, index_string: str = 'auto', target_string: str = ''):
         # Validate inputs (proper formatting)
         source_pile_type = valid_pile_type_check(source_string[0])
         source_pile_ind = valid_index_check(source_string[1:])
-        index = valid_index_check(index_string)
         target_pile_type = valid_pile_type_check(target_string[0], source=False)
         target_pile_ind = valid_index_check(target_string[1:])
 
@@ -113,6 +112,11 @@ class FreeCellModel:
         target = self.select_pile(target_pile_type, target_pile_ind)
 
         # Source and target are guaranteed to be valid piles
+
+        if index_string == 'auto':
+            index = source.len() - 1
+        else:
+            index = valid_index_check(index_string)
 
         # Raises error if move is illegal
         legal_move_check(source, index, target)
