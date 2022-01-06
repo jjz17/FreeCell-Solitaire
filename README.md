@@ -31,8 +31,8 @@ To deploy this project run
 
 ```bash
 
-  python BlackJackGame.py
-
+  python freecell.py
+  
 ```
 
 
