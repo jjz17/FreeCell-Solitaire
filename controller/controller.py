@@ -77,7 +77,7 @@ class Controller:
 
     # Assumes only 1-card moves possible, user doesn't need to specify card index
     def simple_play(self):
-        self.view.render_initial_dialogue()
+        self.view.render_simple_initial_dialogue()
         self.view.render_instructions()
         # Display board
         self.view.render_board()

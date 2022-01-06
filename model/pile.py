@@ -64,5 +64,6 @@ class CascadePile(Pile):
             raise IndexError('Cannot move card that is not at the end of the pile')
 
     def legal_move_to_check(self, card: Card):
-        if not card.value_one_less_than(self.last_card()) or card.same_color(self.last_card()):
-            raise ValueError('Invalid card')
+        if self.len() != 0:
+            if not card.value_one_less_than(self.last_card()) or card.same_color(self.last_card()):
+                raise ValueError('Invalid card')

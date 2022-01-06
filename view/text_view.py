@@ -6,6 +6,8 @@ class ConsoleTextView:
                    's for game stats, p for progress bar, and h for help\n '
     initial_dialogue = '\nFreeCell Solitaire: Implemented by Jason Zhang\nTo execute a card move, specify the source ' \
                        'pile, card index, and the target pile in the following format: C1 13 O3 '
+    simple_initial_dialogue = '\nFreeCell Solitaire: Implemented by Jason Zhang\nTo execute a card move, specify the' \
+                              ' source pile and the target pile in the following format: C1 O3 '
     set_up_dialogue = '\nCustomize your FreeCell Solitaire game by specifying the number of cascade and open piles ' \
                       'you would like.\n\nThe default is 4 cascade and 4 open piles.\n\nTo play the default game, ' \
                       'hit enter at the prompt.'
@@ -24,6 +26,9 @@ class ConsoleTextView:
 
     def render_initial_dialogue(self):
         print(self.initial_dialogue)
+
+    def render_simple_initial_dialogue(self):
+        print(self.simple_initial_dialogue)
 
     def render_set_up_dialogue(self):
         print(self.set_up_dialogue)
@@ -49,8 +54,5 @@ class ConsoleTextView:
         progress = int(progress * 52)
         p_bar = '█'
         e_bar = '▁'
-        progress_bar = p_bar*progress + e_bar*(52-progress)
+        progress_bar = p_bar * progress + e_bar * (52 - progress)
         print(f'Progress: {progress_bar}')
-
-
-
