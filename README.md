@@ -21,8 +21,9 @@ foundation piles, you have won the game! Note: This version of the game only sup
 
 ## Demo
 
-![image](https://user-images.githubusercontent.com/48007679/136310729-e354ab8f-c5d5-4eee-bd9c-14857be688d3.png)
-
+[comment]: <> (![image]&#40;https://user-images.githubusercontent.com/48007679/136310729-e354ab8f-c5d5-4eee-bd9c-14857be688d3.png&#41;)
+![image](https://github.com/jjz17/FreeCell-Solitaire/raw/main/screenshots/initialize_game.png)
+![image](https://github.com/jjz17/FreeCell-Solitaire/raw/main/screenshots/playing_game.png)
 
   
 ## Deployment
