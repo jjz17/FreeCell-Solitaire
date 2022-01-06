@@ -11,7 +11,7 @@ Suits do not affect card values.
 A, J, Q, and K are worth 1, 11, 12, and 13, respectively.
 
 ## Gameplay
-[Detailed Game Rules Description](http://www.solitairecity.com/Help/FreeCell.shtml)
+[Detailed Game Description](https://en.wikipedia.org/wiki/FreeCell)
 
 Simply run the script to begin playing. You will have the option to customize your game in terms of the number of 
 cascade and open piles that are available. The deck will automatically be shuffled and distributed into the cascade piles,
