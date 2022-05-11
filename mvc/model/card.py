@@ -13,6 +13,11 @@ class Card:
     def __str__(self):
         return f'{self.value.value}{self.suit.value}'
 
+    def __eq__(self, other):
+        if isinstance(self, other.__class__):
+            return self.value == other.value and self.suit == other.suit
+        return False
+
     def same_suit(self, other_card):
         return self.suit == other_card.suit
 
