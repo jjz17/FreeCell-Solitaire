@@ -36,7 +36,7 @@ pip install -r requirements.txt
 
 To deploy this project run
 ```bash
-python freecell.py
+python run.py
 ```
 
 ## Testing
