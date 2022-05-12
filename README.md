@@ -29,14 +29,22 @@ foundation piles, you have won the game! Note: This version of the game only sup
   
 ## Deployment
 
-To deploy this project run
-
+To install requirements run
 ```bash
-
-  python freecell.py
-  
+pip install -r requirements.txt
 ```
 
+To deploy this project run
+```bash
+python freecell.py
+```
+
+## Testing
+
+To test this project run
+```bash
+python -m pytest
+```
 
 [comment]: <> (## Links)
 
